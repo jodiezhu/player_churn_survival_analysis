@@ -43,3 +43,30 @@ kmf = KaplanMeierFitter()
 kmf.fit(df["Time"], df["Churned"])
 kmf.plot()
 ```
+
+# Looking for Trends
+We’re really interested in is understanding and analyzing churn. We want to know what makes a player more likely to churn, and what causes them to stick around.
+
+One easy way to do that is to create different Kaplan-Meier survival curves for each subset of players you want to look at. The statistical significance of the differences can be tested in many ways, including the Log-Rank test, which we’ll apply below. The Log-Rank test simply evaluates whether the underlying population survival curves for the two sampled groups are likely to be the same. The p-value is essentially the probability that the curves are the same, so statistical significance (I’ll use p < .05) is good!
+
+```python
+#Multiple groups
+groups = df['Female']
+ix = (groups == 1)
+
+kmf.fit(df["Time"][~ix], df["Churned"][~ix], label='Male')
+ax2 = kmf.plot()
+
+kmf.fit(df["Time"][ix], df["Churned"][ix], label='Female')
+ax_gender =kmf.plot(ax=ax2)
+ax_gender.get_figure().savefig("km_plot2.png")
+
+
+#log rank
+from lifelines.statistics import logrank_test
+
+a=logrank_test(df["Time"][ix], df["Time"][~ix], alpha=0.95)
+print a
+```
+
+
