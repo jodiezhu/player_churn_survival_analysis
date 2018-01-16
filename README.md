@@ -34,4 +34,12 @@ df = pd.DataFrame({'Female':female,'Age':age,'Time': observed_lifetimes,'Churned
 df['Churned'] = np.where(df['Churned']==True, 1, 0)
 ```
 
-The first few observations are displayed below. Note how the second customer has a follow-up time of 360, while the third has a follow-up time of 8, even though neither have churned. This means customer 2 signed up 360 days ago, but customer 3 signed up only 8 days ago. Neither have left us yet!
+The first few observations. Note only the second player is not churned for a follow-up time of 30, while the other were all churned with a follow-up time less than 30. It seems like the churned rate is pretty high based on the first few observations.
+
+```python
+from lifelines import KaplanMeierFitter
+
+kmf = KaplanMeierFitter()
+kmf.fit(df["Time"], df["Churned"])
+kmf.plot()
+```
