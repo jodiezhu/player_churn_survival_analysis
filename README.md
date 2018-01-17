@@ -69,12 +69,12 @@ a=logrank_test(df["Time"][ix], df["Time"][~ix], alpha=0.95)
 print a
 ```
 ```python
-<lifelines.StatisticalResult:
+<lifelines.StatisticalResult: 
 
 df=1, alpha=0.95, t_0=-1, null_distribution=chi squared
 
-test_statistic p 
-0.1447         0.7037
+test_statistic      p   
+        0.0012 0.9723
 ```
 
 # Cox Regression
@@ -89,9 +89,9 @@ cph.fit(df, duration_col="Time", event_col="Churned")
 cph.print_summary()  # access the results using cph.summary
 ```
 ```python
-n=500, number of events=435
+n=500, number of events=416
 
           coef  exp(coef)  se(coef)       z      p  lower 0.95  upper 0.95   
-Age    -0.0018     0.9982    0.0060 -0.3085 0.7577     -0.0136      0.0099   
-Female  0.0542     1.0557    0.1125  0.4819 0.6299     -0.1662      0.2746 
+Age    -0.0069     0.9931    0.0036 -1.9429 0.0520     -0.0139      0.0001  .
+Female -0.0100     0.9900    0.1149 -0.0872 0.9305     -0.2353      0.2153   
 ```
