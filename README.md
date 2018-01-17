@@ -68,5 +68,12 @@ from lifelines.statistics import logrank_test
 a=logrank_test(df["Time"][ix], df["Time"][~ix], alpha=0.95)
 print a
 ```
+```python
+<lifelines.StatisticalResult:
 
+df=1, alpha=0.95, t_0=-1, null_distribution=chi squared
+
+test_statistic p 
+0.1447         0.7037
+```
 
