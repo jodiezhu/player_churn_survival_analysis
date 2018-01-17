@@ -77,3 +77,14 @@ test_statistic p
 0.1447         0.7037
 ```
 
+# Cox Regression
+
+```python
+from lifelines import CoxPHFitter
+
+# Using Cox Proportional Hazards model
+cph = CoxPHFitter()
+cph.fit(df, duration_col="Time", event_col="Churned")
+
+cph.print_summary()  # access the results using cph.summary
+```
