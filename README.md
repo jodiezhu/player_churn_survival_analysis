@@ -88,3 +88,10 @@ cph.fit(df, duration_col="Time", event_col="Churned")
 
 cph.print_summary()  # access the results using cph.summary
 ```
+```python
+n=500, number of events=435
+
+          coef  exp(coef)  se(coef)       z      p  lower 0.95  upper 0.95   
+Age    -0.0018     0.9982    0.0060 -0.3085 0.7577     -0.0136      0.0099   
+Female  0.0542     1.0557    0.1125  0.4819 0.6299     -0.1662      0.2746 
+```
